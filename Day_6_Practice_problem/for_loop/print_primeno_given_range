@@ -1,0 +1,24 @@
+#! /bin/bash -x
+low=1
+
+
+while [ $low -eq 1 ]
+do
+	echo "Enter the lower limit,greater than 1"
+	read low
+done
+
+echo "Enter the upper limit"
+read upper
+
+
+for i in `seq $low $upper`
+do
+	ret=$(factor $i | grep $i | cut -d ":" -f 2 | cut -d " " -f 2)
+
+if [ "$ret" -eq "$i" ]
+then
+	echo "$i is prime"
+
+fi
+done
